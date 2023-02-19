@@ -25,6 +25,9 @@ let products = [
 let totalProductCart = 0;
 let sumProductCart = 0;
 
+let maxTotalPriceProduct = products[0][1] * products[0][2];
+let minTotalPriceProduct = products[0][1] * products[0][2];
+
 let averagePriceProduct = 0;
 let expensiveProduct = 0;
 let cheapProduct = 0;
@@ -40,14 +43,23 @@ for (let i = 0; i < products.length; i++) {
 	let quantityProduct = products[i][1];
 	let priceProduct = products[i][2];
 
+	let totalPriceProduct = quantityProduct * priceProduct;
+
 	totalProductCart += quantityProduct;
 	sumProductCart += quantityProduct * priceProduct;
 	averagePriceProduct = sumProductCart / products.length;
 
-	if (priceProduct > 100) {
+	if (totalPriceProduct >= maxTotalPriceProduct) {
+		maxTotalPriceProduct = totalPriceProduct;
+	}
+	if (totalPriceProduct <= minTotalPriceProduct) {
+		minTotalPriceProduct = totalPriceProduct;
+	}
+
+	if (priceProduct >= 100) {
 		expensiveProduct += 1;
 	}
-	if (priceProduct < 50) {
+	if (priceProduct <= 50) {
 		cheapProduct += 1;
 	}
 
@@ -68,13 +80,11 @@ for (let i = 0; i < products.length; i++) {
 	let quantityProduct = products[i][1];
 	let priceProduct = products[i][2];
 	let totalPriceProduct = quantityProduct * priceProduct;
-	let maxTotalPriceProduct = products[0][1] * products[0][2];
-	let minTotalPriceProduct = products[0][1] * products[0][2];
 
-	if (totalPriceProduct >= maxTotalPriceProduct) {
+	if (totalPriceProduct == maxTotalPriceProduct) {
 		totalPriceProduct += ' +';
 	}
-	if (totalPriceProduct <= minTotalPriceProduct) {
+	if (totalPriceProduct == minTotalPriceProduct) {
 		totalPriceProduct += ' -';
 	}
 
