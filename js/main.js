@@ -11,7 +11,6 @@ let sumProductCart = 0;
 let maxTotalPriceProduct = products[0][1] * products[0][2];
 let minTotalPriceProduct = products[0][1] * products[0][2];
 
-let averagePriceProduct = 0;
 let expensiveProduct = 0;
 let cheapProduct = 0;
 
@@ -30,7 +29,6 @@ for (let i = 0; i < products.length; i++) {
 
 	totalProductCart += quantityProduct;
 	sumProductCart += quantityProduct * priceProduct;
-	averagePriceProduct = sumProductCart / products.length;
 
 	if (totalPriceProduct >= maxTotalPriceProduct) {
 		maxTotalPriceProduct = totalPriceProduct;
@@ -62,6 +60,7 @@ for (let i = 0; i < products.length; i++) {
 	let product = products[i][0];
 	let quantityProduct = products[i][1];
 	let priceProduct = products[i][2];
+
 	let totalPriceProduct = quantityProduct * priceProduct;
 
 	if (totalPriceProduct == maxTotalPriceProduct) {
@@ -78,7 +77,7 @@ console.log('***************************');
 console.log('Всього товарів ' + totalProductCart);
 console.log('Сума товарів в кошику ' + sumProductCart);
 console.log('***************************');
-console.log('Средня ціна товару ' + averagePriceProduct);
+console.log('Средня ціна товару ' + sumProductCart / products.length);
 console.log('Товарів дорожче 100 - ' + expensiveProduct);
 console.log('Товарів дешевше 50 - ' + cheapProduct);
 console.log('***************************');
