@@ -38,10 +38,10 @@ for (let i = 0; i < products.length; i++) {
 	}
 
 	if (priceProduct >= 100) {
-		expensiveProduct += 1;
+		expensiveProduct++;
 	}
 	if (priceProduct <= 50) {
-		cheapProduct += 1;
+		cheapProduct++;
 	}
 
 	if (priceProduct >= maxPrice) {
