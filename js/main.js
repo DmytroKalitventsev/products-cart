@@ -90,7 +90,7 @@ function countExpensiveProducts(object) {
 	return expensiveProducts;
 }
 function showExpensiveProducts(object) {
-	return resultText = `Товарів в кошику дорожче 100 - ${countExpensiveProducts(object)} -> ${findNameMaxPrice(object)} ${findMaxPrice(object)}`;
+	return resultText = `Товарів в кошику дорожче 100 - придбали ${countExpensiveProducts(object)} -> ${findNameMaxPrice(object)} ${findMaxPrice(object)}`;
 }
 
 function countCheapProducts(object) {
@@ -105,7 +105,7 @@ function countCheapProducts(object) {
 	return cheapProducts;
 }
 function showCheapProducts(object) {
-	return resultText = `Товарів в кошику дешевше 50 - ${countCheapProducts(object)} -> ${findNameMinPrice(object)} ${findMinPrice(object)}`;
+	return resultText = `Товарів в кошику дешевше 50 - придбали ${countCheapProducts(object)} -> ${findNameMinPrice(object)} ${findMinPrice(object)}`;
 }
 
 function findMaxPrice(object) {
