@@ -4,6 +4,7 @@ let products = [
 	{ name: 'Масло', count: 2, price: 60 },
 	{ name: 'Сало', count: 1, price: 150 },
 ];
+let resultText = '';
 let isRepeat = true;
 
 while (isRepeat) {
@@ -11,24 +12,27 @@ while (isRepeat) {
 }
 
 function showPointsCart(object) {
-	let userAnswer = prompt('1 - Всього товарів, 2 - Сума товарів в кошику, 3 - Средня ціна товару, 4 - Товарів дорожче 100, 5 - Товарів дешевше 50, 6 - Самий дорогий товар, 7 - Самий дешевий товар, 8 - Вивести корзину в консоль');
+	let userAnswer = prompt(`1 - Всього товарів в кошику\n2 - Сума товарів в кошику\n3 - Средня ціна одного товару в кошику\n4 - Товарів в кошику дорожче 100\n5 - Товарів в кошику дешевше 50\n6 - Самий дорогий товар в кошику\n7 - Самий дешевий товар в кошику\n8 - Вивести кошик в консоль`);
 
 	if (userAnswer == '1') {
-		showTotalCount(object)
+		alert(showTotalCount(object));
 	} else if (userAnswer == '2') {
-		showTotalPrice(object);
+		alert(showTotalPrice(object));
 	} else if (userAnswer == '3') {
-		showAveragePrice(object);
+		alert(showAveragePrice(object));
 	} else if (userAnswer == '4') {
-		showExpensiveProducts(object);
+		alert(showExpensiveProducts(object));
 	} else if (userAnswer == '5') {
-		showCheapProducts(object);
+		alert(showCheapProducts(object));
 	} else if (userAnswer == '6') {
-		showMaxPrice(object);
+		alert(showMaxPrice(object));
 	} else if (userAnswer == '7') {
-		showMinPrice(object);
+		alert(showMinPrice(object));
 	} else if (userAnswer == '8') {
 		showAllCartInfo(object);
+		alert('Твій кошик в консолі');
+	} else if (userAnswer >= '9') {
+		alert('Такого пункту не існує')
 	} else {
 		isRepeat = false;
 	}
@@ -44,7 +48,7 @@ function calcTotalCount(object) {
 	return totalCount;
 }
 function showTotalCount(object) {
-	alert('Всього товарів ' + calcTotalCount(object));
+	return resultText = `Всього товарів в кошику - ${calcTotalCount(object)}`;
 }
 
 function calcTotalPrice(object) {
@@ -57,7 +61,7 @@ function calcTotalPrice(object) {
 	return totalPrice;
 }
 function showTotalPrice(object) {
-	alert('Сума товарів в кошику ' + calcTotalPrice(object));
+	return resultText = `Сума товарів в кошику - ${calcTotalPrice(object)}`;
 }
 
 function calcAveragePrice(object) {
@@ -72,7 +76,7 @@ function calcAveragePrice(object) {
 	return averagePrice;
 }
 function showAveragePrice(object) {
-	alert('Средня ціна товару ' + calcAveragePrice(object));
+	return resultText = `Средня ціна одного товару в кошику - ${calcAveragePrice(object)}`;
 }
 
 function countExpensiveProducts(object) {
@@ -87,7 +91,7 @@ function countExpensiveProducts(object) {
 	return expensiveProducts;
 }
 function showExpensiveProducts(object) {
-	alert('Товарів дорожче 100 - ' + countExpensiveProducts(object));
+	return resultText = `Товарів в кошику дорожче 100 - ${countExpensiveProducts(object)} -> ${findNameMaxPrice(object)} ${findMaxPrice(object)}`;
 }
 
 function countCheapProducts(object) {
@@ -102,7 +106,7 @@ function countCheapProducts(object) {
 	return cheapProducts;
 }
 function showCheapProducts(object) {
-	alert('Товарів дешевше 50 - ' + countCheapProducts(object));
+	return resultText = `Товарів в кошику дешевше 50 - ${countCheapProducts(object)} -> ${findNameMinPrice(object)} ${findMinPrice(object)}`;
 }
 
 function findMaxPrice(object) {
@@ -141,7 +145,7 @@ function findCountMaxPrice(object) {
 	return countMaxPrice;
 }
 function showMaxPrice(object) {
-	alert('Самий дорогий товар - ' + findNameMaxPrice(object) + ' ' + findMaxPrice(object), 'придбали ' + findCountMaxPrice(object));
+	return resultText = `Самий дорогий товар в кошику - ${findNameMaxPrice(object)} ${findMaxPrice(object)} придбали ${findCountMaxPrice(object)}`;
 }
 
 function findMinPrice(object) {
@@ -180,7 +184,7 @@ function findCountMinPrice(object) {
 	return countMinPrice;
 }
 function showMinPrice(object) {
-	alert('Самий дешевий товар - ' + findNameMinPrice(object) + ' ' + findMinPrice(object), 'придбали ' + findCountMinPrice(object));
+	return resultText = `Самий дешевий товар в кошику - ${findNameMinPrice(object)} ${findMinPrice(object)} придбали ${findCountMinPrice(object)}`;
 }
 
 function showCart(object) {
@@ -199,18 +203,23 @@ function showCart(object) {
 		console.log(i + 1 + '. ' + object[i].name + ' ' + object[i].count + 'x' + object[i].price + ' = ' + totalCost);
 	}
 }
+
 function showAllCartInfo(object) {
 	showCart(object);
+	addSeparator();
+	console.log(showTotalCount(object));
+	console.log(showTotalPrice(object));
+	addSeparator();
+	console.log(showAveragePrice(object));
+	console.log(showExpensiveProducts(object));
+	console.log(showCheapProducts(object));
+	addSeparator();
+	console.log(showMaxPrice(object));
+	console.log(showMinPrice(object));
+}
+
+function addSeparator() {
 	console.log('***************************');
-	console.log('Всього товарів ' + calcTotalCount(object));
-	console.log('Сума товарів в кошику ' + calcTotalPrice(object));
-	console.log('***************************');
-	console.log('Средня ціна товару ' + calcAveragePrice(object));
-	console.log('Товарів дорожче 100 - ' + countExpensiveProducts(object));
-	console.log('Товарів дешевше 50 - ' + countCheapProducts(object));
-	console.log('***************************');
-	console.log('Самий дорогий товар - ' + findNameMaxPrice(object) + ' ' + findMaxPrice(object), 'придбали ' + findCountMaxPrice(object));
-	console.log('Самий дешевий товар - ' + findNameMinPrice(object) + ' ' + findMinPrice(object), 'придбали ' + findCountMinPrice(object));
 }
 
 function closeCart() {
@@ -233,9 +242,3 @@ function closeCart() {
 Самий дорогий товар - сало 150 придбали 1
 Самий дешевий товар - хліб 20 придбали 2
 */
-
-// Переробити механізм отримання результату під функції
-// Зробити отримання кожного пункту через запрос користувача
-// Для розділу товарів дорожче... потрібно вивести які саме товари дорожче:
-// Товарів дорожче 100 - 1
-// Сало - 150
