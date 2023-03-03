@@ -13,7 +13,6 @@ while (isRepeat) {
 
 function showPointsCart(object) {
 	let userAnswer = prompt(`1 - Всього товарів в кошику\n2 - Сума товарів в кошику\n3 - Средня ціна одного товару в кошику\n4 - Товарів в кошику дорожче 100\n5 - Товарів в кошику дешевше 50\n6 - Самий дорогий товар в кошику\n7 - Самий дешевий товар в кошику\n8 - Вивести кошик в консоль`);
-
 	if (userAnswer == '1') {
 		alert(showTotalCount(object));
 	} else if (userAnswer == '2') {
@@ -31,7 +30,7 @@ function showPointsCart(object) {
 	} else if (userAnswer == '8') {
 		showAllCartInfo(object);
 		alert('Твій кошик в консолі');
-	} else if (userAnswer >= '9') {
+	} else if (userAnswer >= '9' || userAnswer == '') {
 		alert('Такого пункту не існує')
 	} else {
 		isRepeat = false;
@@ -220,10 +219,6 @@ function showAllCartInfo(object) {
 
 function addSeparator() {
 	console.log('***************************');
-}
-
-function closeCart() {
-	return false;
 }
 
 /*
